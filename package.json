@@ -1,8 +1,1 @@
-{
-  "name": "muvvhimi-aviator-ai",
-  "version": "0.1.0",
-  "private": true,
-  "type": "module",
-  "scripts": {"start": "node server.js"},
-  "dependencies": {"@neondatabase/serverless": "latest", "express": "latest"}
-}
+{"name":"muvvhimi-aviator-engine","version":"1.0.0","private":true,"type":"module","scripts":{"start":"node server.js"},"dependencies":{"@neondatabase/serverless":"latest","express":"latest"}}

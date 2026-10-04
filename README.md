@@ -1,17 +1,19 @@
-# MUVVHIMII — Aviator AI starter
+# MUVVHIMII Aviator Analysis Engine v1
 
-This starter separates the browser from Neon. The browser calls `/api/*`; the server uses `DATABASE_URL` to access Neon.
+This is the real Analysis & Prediction Engine layer for the MUVVHIMII prototype.
 
-## Run locally
-
-1. Install Node.js 20+.
-2. Run `npm install`.
-3. Set `DATABASE_URL` to the Neon Production connection string as an environment variable.
-4. Run `npm start`.
-5. Open `http://localhost:3000`.
+## What it does
+- Stores user-entered Aviator multipliers in Neon (`aviator_rounds`).
+- Reads recent stored rounds from Neon.
+- Calculates mean, median, empirical quantiles, standard deviation, coefficient of variation and distribution percentages.
+- Refuses to generate a prediction when fewer than 20 rounds are available.
+- Uses `baseline-v1`, an explicit empirical-quantile baseline.
+- Stores generated prediction records in `aviator_predictions`.
+- Stores Success/Fail feedback and updates prediction status.
+- Provides aggregate feedback performance.
 
 ## Important
+This is statistical analysis, not a guaranteed predictor. Historical multipliers should not be assumed to make an independent next round predictable. “Quantum” is UI branding, not quantum computing.
 
-Do not paste the Neon connection string into `public/index.html` or commit it to source control.
-
-The prediction engine is intentionally not presented as a guaranteed predictor. A live Aviator round feed is still required before the dashboard can truthfully display live round data.
+## Deploy
+Set `DATABASE_URL` on the server/Render environment to the Neon Production connection string. Never put the connection string in browser JavaScript or commit it to GitHub.
